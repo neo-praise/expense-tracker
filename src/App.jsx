@@ -1,8 +1,22 @@
+import { Routes, Route } from "react-router";
+import { useState } from "react";
+import Dashboard from "./pages/Dashboard";
+import AddExpenses from "./pages/AddExpenses";
+import Expenses from "./pages/Expenses";
+
 function App() {
+  const [showDesc, setShowDesc] = useState(false);
   return (
-    <>
-      <h1>Welcome to expense tracker</h1>
-    </>
+    <main className="Layout">
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/addExpenses" element={<AddExpenses />} />
+        <Route
+          path="/expenses"
+          element={<Expenses showDesc={showDesc} setShowDesc={setShowDesc} />}
+        />
+      </Routes>
+    </main>
   );
 }
 

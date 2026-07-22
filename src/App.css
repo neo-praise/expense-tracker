@@ -1,0 +1,11 @@
+@import "tailwindcss";
+* {
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.Layout {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
