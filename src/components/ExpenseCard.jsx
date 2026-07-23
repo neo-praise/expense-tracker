@@ -15,7 +15,10 @@ export default function ExpenseCard({ showDesc, setShowDesc }) {
 
         {/* Details */}
         <div className="w-[47%] h-full flex flex-col justify-center">
-          <span className="font-bold text-lg" onClick={() => setShowDesc(true)}>
+          <span
+            className="font-bold text-lg"
+            onClick={(e) => setShowDesc(true)}
+          >
             Trader Joe's
           </span>
           <span className="text-sm text-gray-500">Food $ Drink</span>

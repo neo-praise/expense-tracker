@@ -2,16 +2,25 @@ import Navbar from "../components/Navbar";
 import { CiCirclePlus } from "react-icons/ci";
 
 export default function AddExpenses() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("it is working");
+  }
+
   return (
     <section className="w-full h-auto min-h-screen bg-[#f6f2fe] pb-22">
+      <Navbar />
       <div className="w-full h-auto p-3">
         <div className="w-full h-10 flex items-center justify-center">
           <span className="text-[21px] font-bold">Add New Expense</span>
         </div>
 
-        <form className="w-full h-auto mt-3 flex flex-col gap-3">
+        <form
+          className="w-full h-auto mt-3 flex flex-col gap-3 md:items-center"
+          onSubmit={handleSubmit}
+        >
           {/* Title */}
-          <div className="w-full h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
+          <div className="w-full md:w-[60%] h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
             <label htmlFor="title" className="text-[#7c67a0] font-bold">
               Title
             </label>
@@ -23,7 +32,7 @@ export default function AddExpenses() {
             />
           </div>
           {/* Category */}
-          <div className="w-full h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
+          <div className="w-full md:w-[60%] h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
             <label htmlFor="category" className="text-[#7c67a0] font-bold">
               Category
             </label>
@@ -43,7 +52,7 @@ export default function AddExpenses() {
             </select>
           </div>
           {/* Amount */}
-          <div className="w-full h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
+          <div className="w-full md:w-[60%] h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
             <label htmlFor="amount" className="text-[#7c67a0] font-bold">
               Amount (₦)
             </label>
@@ -55,7 +64,7 @@ export default function AddExpenses() {
             />
           </div>
           {/* Date */}
-          <div className="w-full h-auto bg-white rounded-xl p-3 shadow-xl">
+          <div className="w-full md:w-[60%] h-auto bg-white rounded-xl p-3 shadow-xl">
             <label htmlFor="date" className="text-[#7c67a0] font-bold">
               Date
             </label>
@@ -66,7 +75,7 @@ export default function AddExpenses() {
             />
           </div>
           {/* Description */}
-          <div className="w-full h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
+          <div className="w-full md:w-[60%] h-auto bg-[#feffff] rounded-xl p-3 shadow-xl">
             <label htmlFor="description" className="text-[#7c67a0] font-bold">
               Description
             </label>
@@ -78,7 +87,7 @@ export default function AddExpenses() {
             ></textarea>
           </div>
           {/* Button */}
-          <button className="w-full h-12 rounded-lg bg-[#ac95e5] text-[#f2ecf9] font-semibold cursor-pointer hover:bg-[#9e7ef2] transition flex justify-center items-center gap-2">
+          <button className="w-full md:w-[30%] h-12 rounded-lg bg-[#ac95e5] text-[#f2ecf9] font-semibold cursor-pointer hover:bg-[#9e7ef2] transition flex justify-center items-center gap-2">
             ADD EXPENSE{" "}
             <span className="text-[white]">
               <CiCirclePlus />
@@ -86,7 +95,6 @@ export default function AddExpenses() {
           </button>
         </form>
       </div>
-      <Navbar />
     </section>
   );
 }

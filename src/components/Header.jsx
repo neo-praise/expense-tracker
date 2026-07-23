@@ -2,9 +2,10 @@ import { IoSearch } from "react-icons/io5";
 
 export default function Header() {
   return (
-    <div className="w-full h-[110px]">
-      <div className="w-full h-[60%] flex justify-between p-3 items-center">
-        <font className="font-bold">Expense Tracker</font>
+    <div className="w-full h-[110px] md:flex md:flex-col md:justify-center md:items-center">
+      {/* Expense Tracker and Search Bar  */}
+      <div className="w-full h-[60%] flex justify-between p-3 items-center md:justify-center md:w-[90%]">
+        <font className="font-bold md:hidden">Expense Tracker</font>
         <div className="w-[60%] h-[85%] flex items-center">
           <input
             type="text"
@@ -16,7 +17,8 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="w-full h-[40%] flex flex-col pl-3 ">
+      {/* Greeting  */}
+      <div className="w-full h-[40%] flex flex-col pl-3 md:w-[90%]">
         <font className="font-bold text-lg">Good Morning!😊</font>
         <span className="text-sm">21st July 2026</span>
       </div>
