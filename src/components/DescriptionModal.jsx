@@ -1,12 +1,18 @@
 import { IoClose } from "react-icons/io5";
 
-export default function DescriptionModal({ description, onClose }) {
+export default function DescriptionModal({ description, onClose, error }) {
   return (
     <section className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
       <div className="w-[90%] max-w-[350px] bg-white rounded-2xl shadow-lg overflow-hidden">
         {/* Header */}
         <div className="w-full h-12 flex justify-between items-center px-4 border-b">
-          <span className="font-bold text-lg">Description</span>
+          <span className="font-bold text-lg">
+            {error ? (
+              <span className="text-red-700">Error!</span>
+            ) : (
+              "Description"
+            )}
+          </span>
           <IoClose
             className="text-2xl cursor-pointer hover:text-red-500"
             onClick={onClose}
@@ -16,7 +22,8 @@ export default function DescriptionModal({ description, onClose }) {
         {/* Body */}
         <div className="w-full min-h-[120px] p-4">
           <p className="text-gray-600 leading-7">
-            {description || "No description available."}
+            {description || <span className="text-red-700">{error}</span> ||
+              "No description available."}
           </p>
         </div>
 
