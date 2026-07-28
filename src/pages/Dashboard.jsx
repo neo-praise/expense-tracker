@@ -41,7 +41,7 @@ export default function Dashboard() {
               </span>
             </div>
             <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">$340</font>
+              <font className="text-2xl font-bold">₦340</font>
               <font className="text-sm leading-[15px]">
                 Max spent on 15 May
               </font>
@@ -62,7 +62,7 @@ export default function Dashboard() {
               </span>
             </div>
             <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">$12</font>
+              <font className="text-2xl font-bold">₦12</font>
               <font className="text-sm leading-[15px]">
                 Min spent on 08 May
               </font>
@@ -79,7 +79,7 @@ export default function Dashboard() {
               </span>
             </div>
             <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">$1240</font>
+              <font className="text-2xl font-bold">₦1240</font>
               <font className="text-sm leading-[15px]">
                 Total Spent this month
               </font>

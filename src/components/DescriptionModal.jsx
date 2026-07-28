@@ -1,6 +1,11 @@
 import { IoClose } from "react-icons/io5";
 
-export default function DescriptionModal({ description, onClose, error }) {
+export default function DescriptionModal({
+  description,
+  onClose,
+  error,
+  expenses,
+}) {
   return (
     <section className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
       <div className="w-[90%] max-w-[350px] bg-white rounded-2xl shadow-lg overflow-hidden">

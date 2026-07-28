@@ -4,14 +4,6 @@ import Validation from "../components/Validation";
 import DescriptionModal from "../components/DescriptionModal";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { PiBowlFood } from "react-icons/pi"; //Food
-import { BsFillBasketFill } from "react-icons/bs"; //Supermarket
-import { FaCar } from "react-icons/fa6"; //Transport
-import { FaMoneyBillWave } from "react-icons/fa"; //Bills
-import { FaCartShopping } from "react-icons/fa6"; //Shopping
-import { PiMaskHappyThin } from "react-icons/pi"; //Entertainment
-import { GiHealthNormal } from "react-icons/gi"; //Health
-import { MdOutlineEmergency } from "react-icons/md"; //Other
 
 export default function AddExpenses({
   formData,
@@ -62,24 +54,12 @@ export default function AddExpenses({
       return;
     }
 
-    const categoryIcons = {
-      Food: PiBowlFood,
-      Supermarket: BsFillBasketFill,
-      Transport: FaCar,
-      Bills: FaMoneyBillWave,
-      Shopping: FaCartShopping,
-      Entertainment: PiMaskHappyThin,
-      Health: GiHealthNormal,
-      Other: MdOutlineEmergency,
-    };
-
     const newExpenses = {
       ...formData,
       id: Date.now(),
-      icon: categoryIcons[formData.category],
     };
 
-    setExpenses([...expenses, newExpenses]);
+    setExpenses([newExpenses, ...expenses]);
     setError(null);
 
     setFormData({
@@ -88,13 +68,10 @@ export default function AddExpenses({
       amount: "",
       date: "",
       description: "",
-      icon: "",
     });
 
     navigate("/expenses");
   }
-
-  console.log(expenses);
 
   return (
     <>

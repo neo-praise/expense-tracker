@@ -1,12 +1,22 @@
 import { Routes, Route } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dashboard from "./pages/Dashboard";
 import AddExpenses from "./pages/AddExpenses";
 import Expenses from "./pages/Expenses";
 import { RiNumbersFill } from "react-icons/ri";
 
 function App() {
-  const [expenses, setExpenses] = useState([]);
+  //States
+  const [expenses, setExpenses] = useState(() => {
+    const savedExpenses = localStorage.getItem("theExpenses");
+    return savedExpenses ? JSON.parse(savedExpenses) : [];
+  });
+
+  //Save expenses to the Local Storage
+  useEffect(() => {
+    localStorage.setItem("theExpenses", JSON.stringify(expenses));
+  }, [expenses]);
+
   const [formData, setFormData] = useState({
     id: "",
     title: "",
@@ -14,11 +24,11 @@ function App() {
     amount: "",
     date: "",
     description: "",
-    icon: "",
   });
   const [showDesc, setShowDesc] = useState(false);
   const [validation, setValidation] = useState(false);
   const [error, setError] = useState();
+
   return (
     <main className="Layout">
       <Routes>
@@ -40,7 +50,13 @@ function App() {
         />
         <Route
           path="/expenses"
-          element={<Expenses showDesc={showDesc} setShowDesc={setShowDesc} />}
+          element={
+            <Expenses
+              showDesc={showDesc}
+              setShowDesc={setShowDesc}
+              expenses={expenses}
+            />
+          }
         />
       </Routes>
     </main>
