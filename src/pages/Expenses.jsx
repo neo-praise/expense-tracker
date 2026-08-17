@@ -3,7 +3,19 @@ import NoData from "../components/NoData";
 import ExpenseCard from "../components/ExpenseCard";
 import { CiSearch } from "react-icons/ci";
 
-export default function Expenses({ showDesc, setShowDesc, expenses }) {
+export default function Expenses({
+  showDesc,
+  setShowDesc,
+  expenses,
+  setExpenses,
+  validation,
+  setValidation,
+  selectedID,
+  setSelectedID,
+  edit,
+  setEdit,
+  setFormData,
+}) {
   return (
     <>
       <Navbar />
@@ -11,7 +23,7 @@ export default function Expenses({ showDesc, setShowDesc, expenses }) {
         className={
           expenses.length === 0
             ? "w-full h-screen bg-[#f6f2fe] pb-24 flex justify-center items-center md:h-[calc(100vh-53px)]"
-            : "w-full min-h-screen bg-[#f6f2fe] pb-24"
+            : "w-full min-h-screen bg-[#f6f2fe] pb-24 md:pb-7"
         }
       >
         {expenses.length === 0 ? (
@@ -23,7 +35,7 @@ export default function Expenses({ showDesc, setShowDesc, expenses }) {
               <span className="text-2xl font-bold">Expenses</span>
             </div>
             {/* Search */}
-            <div className="w-full md:w-[60%] h-12 mt-3 bg-[#eff1fc] rounded-full shadow-2xl flex items-center px-3">
+            <div className="w-full md:w-[45%] h-12 mt-3 bg-[#eff1fc] rounded-full shadow-2xl flex items-center px-3 sticky top-0 md:top-0">
               <span className="text-gray-400 text-xl">
                 <CiSearch />
               </span>
@@ -34,7 +46,7 @@ export default function Expenses({ showDesc, setShowDesc, expenses }) {
               />
             </div>
             {/* Category */}
-            <div className="w-full md:w-[80%] h-auto flex justify-between mt-4">
+            <div className="w-full md:w-[80%] h-auto flex justify-between mt-4 sticky top-12 md:top-13 bg-[#f6f2fe]">
               <div className="w-[48%] pt-2">
                 <p className="text-sm mb-1 font-semibold">Category</p>
                 <select className="w-full h-11 rounded-full outline-none px-3 bg-[#ecf8f8]">
@@ -69,6 +81,14 @@ export default function Expenses({ showDesc, setShowDesc, expenses }) {
                 showDesc={showDesc}
                 setShowDesc={setShowDesc}
                 expenses={expenses}
+                setExpenses={setExpenses}
+                validation={validation}
+                setValidation={setValidation}
+                selectedID={selectedID}
+                setSelectedID={setSelectedID}
+                edit={edit}
+                setEdit={setEdit}
+                setFormData={setFormData}
               />
             </div>
           </div>

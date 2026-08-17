@@ -3,7 +3,7 @@ import { IoIosAdd } from "react-icons/io";
 import { GiReceiveMoney } from "react-icons/gi";
 import { NavLink } from "react-router";
 
-export default function Navbar() {
+export default function Navbar({ edit }) {
   return (
     <nav className="w-full h-13 bg-[#fffeff] fixed bottom-0 flex md:sticky md:top-0 md:bg-[#a49ce7] md:px-10">
       <div className="hidden md:w-[30%] md:h-[100%] md:block md:flex md:items-center md:p-3">

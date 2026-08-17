@@ -1,14 +1,42 @@
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import RecentTransactions from "../components/RecentTransactions";
+import { formatDate } from "../utilities/formatDate";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
 import { GiWallet } from "react-icons/gi";
 
-export default function Dashboard() {
+export default function Dashboard({ expenses, edit }) {
+  //Total Expenses
+  const totalExpense = expenses.reduce((total, eachExpense) => {
+    return total + eachExpense.amount;
+  }, 0);
+
+  //Highest Expense
+  const highestExpense =
+    expenses.length === 0
+      ? null
+      : expenses.reduce((highest, eachExpense) => {
+          if (eachExpense.amount > highest.amount) {
+            return eachExpense;
+          }
+          return highest;
+        });
+
+  //Lowest Expense
+  const lowestExpense =
+    expenses.length === 0
+      ? null
+      : expenses.reduce((lowest, eachExpense) => {
+          if (eachExpense.amount < lowest.amount) {
+            return eachExpense;
+          }
+          return lowest;
+        });
+
   return (
-    <section className="w-full h-auto bg-[#f6f2fe] pb-18 md:pb-auto md:flex md:flex-col">
+    <section className="w-full h-auto bg-[#f6f2fe] pb-18 md:pb-7 md:flex md:flex-col">
       <Navbar />
       <Header />
 
@@ -25,9 +53,11 @@ export default function Dashboard() {
                 <GiTakeMyMoney />
               </span>
             </div>
-            <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">24</font>
-              <font className="text-sm">21st July 2026</font>
+            <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
+              <font className="text-2xl font-bold">{expenses.length}</font>
+              <font className="text-[12px] md:text-sm ">
+                {formatDate(new Date(), true)}
+              </font>
             </div>
           </div>
           {/* Highest Expense  */}
@@ -40,10 +70,16 @@ export default function Dashboard() {
                 <FaArrowUp />
               </span>
             </div>
-            <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">₦340</font>
-              <font className="text-sm leading-[15px]">
-                Max spent on 15 May
+            <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
+              <font className="text-[19px] font-bold">
+                ₦{highestExpense ? highestExpense.amount : "0"}
+              </font>
+              <font className="text-[12px] md:text-sm leading-[15px]">
+                {highestExpense ? (
+                  `Max spent on ${formatDate(highestExpense.date)}`
+                ) : (
+                  <span className="text-sm">No expenses yet</span>
+                )}
               </font>
             </div>
           </div>
@@ -61,10 +97,16 @@ export default function Dashboard() {
                 <FaArrowDown />
               </span>
             </div>
-            <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">₦12</font>
-              <font className="text-sm leading-[15px]">
-                Min spent on 08 May
+            <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
+              <font className="text-[19px] font-bold">
+                ₦{lowestExpense ? lowestExpense.amount : "0"}
+              </font>
+              <font className="text-[12px] md:text-sm leading-[15px]">
+                {lowestExpense ? (
+                  `Min spent on ${formatDate(lowestExpense.date)}`
+                ) : (
+                  <span className="text-sm">No expenses yet</span>
+                )}
               </font>
             </div>
           </div>
@@ -78,10 +120,14 @@ export default function Dashboard() {
                 <GiWallet />
               </span>
             </div>
-            <div className="w-full h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">₦1240</font>
-              <font className="text-sm leading-[15px]">
-                Total Spent this month
+            <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
+              <font className="text-[19px] font-bold">₦{totalExpense}</font>
+              <font className="text-[12px] md:text-sm leading-[15px]">
+                {expenses.length === 0 ? (
+                  <span className="text-sm">No expenses yet</span>
+                ) : (
+                  "Total Spent this month"
+                )}
               </font>
             </div>
           </div>

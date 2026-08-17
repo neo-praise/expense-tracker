@@ -20,7 +20,7 @@ export default function Header() {
       {/* Greeting  */}
       <div className="w-full h-[40%] flex flex-col pl-3 md:w-[90%]">
         <font className="font-bold text-lg">Good Morning!😊</font>
-        <span className="text-sm">21st July 2026</span>
+        <span className="text-sm"></span>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { CiCirclePlus } from "react-icons/ci";
 
-export default function Form({ formData, setFormData }) {
+export default function Form({ formData, setFormData, edit }) {
   return (
     <>
       {/* Title */}
@@ -52,7 +52,9 @@ export default function Form({ formData, setFormData }) {
           placeholder="₦0.00"
           className="w-full h-12 mt-2 rounded-lg border outline-none px-3 text-2xl"
           value={formData.amount}
-          onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, amount: Number(e.target.value) })
+          }
         />
       </div>
       {/* Date */}
@@ -86,10 +88,7 @@ export default function Form({ formData, setFormData }) {
       </div>
       {/* Button */}
       <button className="w-full md:w-[30%] h-12 rounded-lg bg-[#ac95e5] text-[#f2ecf9] font-semibold cursor-pointer hover:bg-[#9e7ef2] transition flex justify-center items-center gap-2">
-        ADD EXPENSE{" "}
-        <span className="text-[white]">
-          <CiCirclePlus />
-        </span>
+        {edit === null ? "ADD EXPENSE" : `UPDATE EXPENSE`}
       </button>
     </>
   );

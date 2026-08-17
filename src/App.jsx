@@ -28,11 +28,16 @@ function App() {
   const [showDesc, setShowDesc] = useState(false);
   const [validation, setValidation] = useState(false);
   const [error, setError] = useState();
+  const [selectedID, setSelectedID] = useState(null);
+  const [edit, setEdit] = useState(null);
 
   return (
     <main className="Layout">
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route
+          path="/"
+          element={<Dashboard expenses={expenses} edit={edit} />}
+        />
         <Route
           path="/addExpenses"
           element={
@@ -45,6 +50,8 @@ function App() {
               setExpenses={setExpenses}
               showDesc={showDesc}
               setShowDesc={setShowDesc}
+              edit={edit}
+              setEdit={setEdit}
             />
           }
         />
@@ -55,6 +62,14 @@ function App() {
               showDesc={showDesc}
               setShowDesc={setShowDesc}
               expenses={expenses}
+              setExpenses={setExpenses}
+              validation={validation}
+              setValidation={setValidation}
+              selectedID={selectedID}
+              setSelectedID={setSelectedID}
+              edit={edit}
+              setEdit={setEdit}
+              setFormData={setFormData}
             />
           }
         />
