@@ -30,6 +30,7 @@ function App() {
   const [error, setError] = useState();
   const [selectedID, setSelectedID] = useState(null);
   const [edit, setEdit] = useState(null);
+  const [searchItem, setSearchItem] = useState("");
 
   return (
     <main className="Layout">
@@ -70,6 +71,8 @@ function App() {
               edit={edit}
               setEdit={setEdit}
               setFormData={setFormData}
+              searchItem={searchItem}
+              setSearchItem={setSearchItem}
             />
           }
         />

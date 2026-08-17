@@ -25,6 +25,7 @@ export default function ExpenseCard({
   edit,
   setEdit,
   setFormData,
+  searchItem,
 }) {
   const navigate = useNavigate();
   const categoryIcons = {
@@ -64,59 +65,77 @@ export default function ExpenseCard({
     setEdit(idToEdit);
   }
 
+  const searchedExpenses = expenses.filter((expense) => {
+    return expense.title
+      .toLowerCase()
+      .includes(searchItem.trim().toLowerCase());
+  });
+
   return (
     <>
-      {expenses.map((expense) => {
-        const Icon = categoryIcons[expense.category];
-        return (
-          <div
-            className="w-full h-auto rounded-2xl bg-[#fefffe] shadow-2xl flex py-2 flex justify-center items-center"
-            key={expense.id}
-          >
-            {/* Icon */}
-            <div className="w-[18%] h-full flex justify-center items-center">
-              <div className="w-14 h-14 rounded-full bg-[#dff5ee] flex justify-center items-center">
-                <Icon className="md:text-3xl text-2xl" />
+      {searchedExpenses.length === 0 ? (
+        <span className="text-center text-red-700">
+          No expenses match your search.
+        </span>
+      ) : (
+        <>
+          {searchedExpenses.map((expense) => {
+            const Icon = categoryIcons[expense.category];
+            return (
+              <div
+                className="w-full h-auto rounded-2xl bg-[#fefffe] shadow-2xl flex py-2 flex justify-center items-center"
+                key={expense.id}
+              >
+                {/* Icon */}
+                <div className="w-[18%] h-full flex justify-center items-center">
+                  <div className="w-14 h-14 rounded-full bg-[#dff5ee] flex justify-center items-center">
+                    <Icon className="md:text-3xl text-2xl" />
+                  </div>
+                </div>
+                {/* Details */}
+                <div className="w-[47%] h-full flex flex-col justify-center gap-1">
+                  <span
+                    className="font-bold text-[16px] leading-[18px]"
+                    onClick={(e) => setShowDesc(true)}
+                  >
+                    {expense.title}
+                  </span>
+                  <span className="text-sm text-gray-500">
+                    {expense.category}
+                  </span>
+                </div>
+
+                {/* Amount */}
+                <div className="w-[20%] h-full flex flex-col justify-center items-end">
+                  <span className="font-bold text-[15px]">
+                    ₦{expense.amount}
+                  </span>
+                  <span className="text-[13px] text-gray-500">
+                    {formatDate(expense.date)}
+                  </span>
+                </div>
+
+                {/* Actions */}
+                <div className="w-[15%] h-full flex flex-col justify-center items-center gap-2">
+                  <span
+                    className="cursor-pointer text-2xl text-green-700"
+                    onClick={() => handleEdit(expense.id)}
+                  >
+                    <CiEdit />
+                  </span>
+
+                  <span
+                    className="cursor-pointer text-xl text-red-700"
+                    onClick={() => requestDelete(expense.id)}
+                  >
+                    <MdOutlineDeleteOutline />
+                  </span>
+                </div>
               </div>
-            </div>
-            {/* Details */}
-            <div className="w-[47%] h-full flex flex-col justify-center gap-1">
-              <span
-                className="font-bold text-[16px] leading-[18px]"
-                onClick={(e) => setShowDesc(true)}
-              >
-                {expense.title}
-              </span>
-              <span className="text-sm text-gray-500">{expense.category}</span>
-            </div>
-
-            {/* Amount */}
-            <div className="w-[20%] h-full flex flex-col justify-center items-end">
-              <span className="font-bold text-[15px]">₦{expense.amount}</span>
-              <span className="text-[13px] text-gray-500">
-                {formatDate(expense.date)}
-              </span>
-            </div>
-
-            {/* Actions */}
-            <div className="w-[15%] h-full flex flex-col justify-center items-center gap-2">
-              <span
-                className="cursor-pointer text-2xl text-green-700"
-                onClick={() => handleEdit(expense.id)}
-              >
-                <CiEdit />
-              </span>
-
-              <span
-                className="cursor-pointer text-xl text-red-700"
-                onClick={() => requestDelete(expense.id)}
-              >
-                <MdOutlineDeleteOutline />
-              </span>
-            </div>
-          </div>
-        );
-      })}
+            );
+          })}
+        </>
+      )}
 
       {showDesc && (
         <DescriptionModal

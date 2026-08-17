@@ -15,6 +15,8 @@ export default function Expenses({
   edit,
   setEdit,
   setFormData,
+  searchItem,
+  setSearchItem,
 }) {
   return (
     <>
@@ -43,6 +45,8 @@ export default function Expenses({
                 type="text"
                 placeholder="Search expenses..."
                 className="w-full h-full px-3 outline-none bg-transparent text-[#111]"
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
               />
             </div>
             {/* Category */}
@@ -89,6 +93,7 @@ export default function Expenses({
                 edit={edit}
                 setEdit={setEdit}
                 setFormData={setFormData}
+                searchItem={searchItem}
               />
             </div>
           </div>
