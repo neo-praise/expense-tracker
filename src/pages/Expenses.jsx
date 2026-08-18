@@ -19,6 +19,8 @@ export default function Expenses({
   setSearchItem,
   categoryDisplay,
   setCategoryDisplay,
+  sortExpenseValue,
+  setSortExpenseValue,
 }) {
   return (
     <>
@@ -75,11 +77,15 @@ export default function Expenses({
               {/* Sort By  */}
               <div className="w-[48%] pt-2">
                 <p className="text-sm mb-1 font-semibold">Sort By</p>
-                <select className="w-full h-11 rounded-full outline-none bg-[#e5dbfb] text-[13px] p-3 md:text-lg">
-                  <option>Newest</option>
-                  <option>Oldest</option>
-                  <option>Highest Amount</option>
-                  <option>Lowest Amount</option>
+                <select
+                  className="w-full h-11 rounded-full outline-none bg-[#e5dbfb] text-[13px] p-3 md:text-lg"
+                  value={sortExpenseValue}
+                  onChange={(e) => setSortExpenseValue(e.target.value)}
+                >
+                  <option value="default">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="highestAmount">Highest Amount</option>
+                  <option value="lowestAmount">Lowest Amount</option>
                 </select>
               </div>
             </div>
@@ -101,6 +107,7 @@ export default function Expenses({
                 setFormData={setFormData}
                 searchItem={searchItem}
                 categoryDisplay={categoryDisplay}
+                sortExpenseValue={sortExpenseValue}
               />
             </div>
           </div>

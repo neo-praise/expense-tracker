@@ -27,6 +27,7 @@ export default function ExpenseCard({
   setFormData,
   searchItem,
   categoryDisplay,
+  sortExpenseValue,
 }) {
   const navigate = useNavigate();
 
@@ -87,13 +88,32 @@ export default function ExpenseCard({
     return categoryDisplay === expense.category;
   });
 
+  //Sort functionality
+  const sortedExpense = [...displayCategory].sort((a, b) => {
+    if (sortExpenseValue === "default") {
+      return 0;
+    }
+
+    if (sortExpenseValue === "highestAmount") {
+      return b.amount - a.amount;
+    }
+
+    if (sortExpenseValue === "lowestAmount") {
+      return a.amount - b.amount;
+    }
+
+    if (sortExpenseValue === "oldest") {
+      return new Date(a.date) - new Date(b.date);
+    }
+  });
+
   return (
     <>
       {searchedExpenses.length === 0 || displayCategory.length === 0 ? (
         <span className="text-center text-red-700">No expenses found.</span>
       ) : (
         <>
-          {displayCategory.map((expense) => {
+          {sortedExpense.map((expense) => {
             const Icon = categoryIcons[expense.category];
             return (
               <div

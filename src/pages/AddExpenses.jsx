@@ -57,8 +57,12 @@ export default function AddExpenses({
       id: Date.now(),
     };
 
+    const sortedNewExpenses = [newExpenses, ...expenses].sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+
     if (edit === null) {
-      setExpenses([newExpenses, ...expenses]);
+      setExpenses(sortedNewExpenses);
       setError(null);
 
       setFormData({

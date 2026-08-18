@@ -31,7 +31,8 @@ function App() {
   const [selectedID, setSelectedID] = useState(null);
   const [edit, setEdit] = useState(null);
   const [searchItem, setSearchItem] = useState("");
-  const [categoryDisplay, setCategoryDisplay] = useState("");
+  const [categoryDisplay, setCategoryDisplay] = useState("All");
+  const [sortExpenseValue, setSortExpenseValue] = useState("default");
 
   return (
     <main className="Layout">
@@ -76,6 +77,8 @@ function App() {
               setSearchItem={setSearchItem}
               categoryDisplay={categoryDisplay}
               setCategoryDisplay={setCategoryDisplay}
+              sortExpenseValue={sortExpenseValue}
+              setSortExpenseValue={setSortExpenseValue}
             />
           }
         />
