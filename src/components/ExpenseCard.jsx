@@ -26,8 +26,11 @@ export default function ExpenseCard({
   setEdit,
   setFormData,
   searchItem,
+  categoryDisplay,
 }) {
   const navigate = useNavigate();
+
+  // Icons
   const categoryIcons = {
     Food: PiBowlFood,
     Supermarket: BsFillBasketFill,
@@ -39,11 +42,13 @@ export default function ExpenseCard({
     Other: MdOutlineEmergency,
   };
 
+  //Request to delete an expense
   function requestDelete(id) {
     setValidation(true);
     setSelectedID(id);
   }
 
+  //Delete Expense
   function handleDelete(theID) {
     const updateExpenses = expenses.filter((expense) => {
       return expense.id !== theID;
@@ -54,6 +59,7 @@ export default function ExpenseCard({
     setExpenses(updateExpenses);
   }
 
+  //Edit an expense
   function handleEdit(idToEdit) {
     navigate("/addExpenses");
 
@@ -65,21 +71,29 @@ export default function ExpenseCard({
     setEdit(idToEdit);
   }
 
+  //Search Functionality
   const searchedExpenses = expenses.filter((expense) => {
     return expense.title
       .toLowerCase()
       .includes(searchItem.trim().toLowerCase());
   });
 
+  //Category functionality from the searched result
+  const displayCategory = searchedExpenses.filter((expense) => {
+    if (categoryDisplay === "All") {
+      return expense;
+    }
+
+    return categoryDisplay === expense.category;
+  });
+
   return (
     <>
-      {searchedExpenses.length === 0 ? (
-        <span className="text-center text-red-700">
-          No expenses match your search.
-        </span>
+      {searchedExpenses.length === 0 || displayCategory.length === 0 ? (
+        <span className="text-center text-red-700">No expenses found.</span>
       ) : (
         <>
-          {searchedExpenses.map((expense) => {
+          {displayCategory.map((expense) => {
             const Icon = categoryIcons[expense.category];
             return (
               <div

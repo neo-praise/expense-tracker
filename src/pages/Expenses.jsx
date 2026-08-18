@@ -17,6 +17,8 @@ export default function Expenses({
   setFormData,
   searchItem,
   setSearchItem,
+  categoryDisplay,
+  setCategoryDisplay,
 }) {
   return (
     <>
@@ -53,8 +55,12 @@ export default function Expenses({
             <div className="w-full md:w-[80%] h-auto flex justify-between mt-4 sticky top-12 md:top-13 bg-[#f6f2fe]">
               <div className="w-[48%] pt-2">
                 <p className="text-sm mb-1 font-semibold">Category</p>
-                <select className="w-full h-11 rounded-full outline-none px-3 bg-[#ecf8f8]">
-                  <option>All Categories</option>
+                <select
+                  className="w-full h-11 rounded-full outline-none bg-[#ecf8f8] text-[13px] p-3 md:text-lg"
+                  value={categoryDisplay}
+                  onChange={(e) => setCategoryDisplay(e.target.value)}
+                >
+                  <option value="All">All Categories</option>
                   <option value="Food">Food</option>
                   <option value="Supermarket">Supermarket</option>
                   <option value="Transport">Transport</option>
@@ -69,7 +75,7 @@ export default function Expenses({
               {/* Sort By  */}
               <div className="w-[48%] pt-2">
                 <p className="text-sm mb-1 font-semibold">Sort By</p>
-                <select className="w-full h-11 rounded-full outline-none px-3 bg-[#e5dbfb]">
+                <select className="w-full h-11 rounded-full outline-none bg-[#e5dbfb] text-[13px] p-3 md:text-lg">
                   <option>Newest</option>
                   <option>Oldest</option>
                   <option>Highest Amount</option>
@@ -94,6 +100,7 @@ export default function Expenses({
                 setEdit={setEdit}
                 setFormData={setFormData}
                 searchItem={searchItem}
+                categoryDisplay={categoryDisplay}
               />
             </div>
           </div>
