@@ -28,6 +28,8 @@ export default function ExpenseCard({
   searchItem,
   categoryDisplay,
   sortExpenseValue,
+  desMssg,
+  setDesMssg,
 }) {
   const navigate = useNavigate();
 
@@ -107,6 +109,15 @@ export default function ExpenseCard({
     }
   });
 
+  //Function to show the description of each expense
+  function getID(theID) {
+    const selectedExpense = expenses.find((expense) => {
+      return expense.id === theID;
+    });
+    setDesMssg(selectedExpense.description);
+    setShowDesc(true);
+  }
+
   return (
     <>
       {searchedExpenses.length === 0 || displayCategory.length === 0 ? (
@@ -128,11 +139,13 @@ export default function ExpenseCard({
                 </div>
                 {/* Details */}
                 <div className="w-[47%] h-full flex flex-col justify-center gap-1">
-                  <span
-                    className="font-bold text-[16px] leading-[18px]"
-                    onClick={(e) => setShowDesc(true)}
-                  >
-                    {expense.title}
+                  <span className="font-bold text-[16px] leading-[18px]">
+                    <span
+                      onClick={() => getID(expense.id)}
+                      className="cursor-pointer"
+                    >
+                      {expense.title}
+                    </span>
                   </span>
                   <span className="text-sm text-gray-500">
                     {expense.category}
@@ -173,9 +186,11 @@ export default function ExpenseCard({
 
       {showDesc && (
         <DescriptionModal
-          description="kdla"
-          onClose={() => setShowDesc(false)}
-          message="Expense deleted successfully"
+          description={desMssg}
+          onClose={() => {
+            setShowDesc(false);
+            setDesMssg(null);
+          }}
         />
       )}
 

@@ -33,6 +33,7 @@ function App() {
   const [searchItem, setSearchItem] = useState("");
   const [categoryDisplay, setCategoryDisplay] = useState("All");
   const [sortExpenseValue, setSortExpenseValue] = useState("default");
+  const [desMssg, setDesMssg] = useState(null);
 
   return (
     <main className="Layout">
@@ -79,6 +80,8 @@ function App() {
               setCategoryDisplay={setCategoryDisplay}
               sortExpenseValue={sortExpenseValue}
               setSortExpenseValue={setSortExpenseValue}
+              desMssg={desMssg}
+              setDesMssg={setDesMssg}
             />
           }
         />

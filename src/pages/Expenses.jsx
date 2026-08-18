@@ -21,6 +21,8 @@ export default function Expenses({
   setCategoryDisplay,
   sortExpenseValue,
   setSortExpenseValue,
+  desMssg,
+  setDesMssg,
 }) {
   return (
     <>
@@ -108,6 +110,8 @@ export default function Expenses({
                 searchItem={searchItem}
                 categoryDisplay={categoryDisplay}
                 sortExpenseValue={sortExpenseValue}
+                desMssg={desMssg}
+                setDesMssg={setDesMssg}
               />
             </div>
           </div>
