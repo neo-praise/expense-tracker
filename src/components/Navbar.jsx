@@ -5,11 +5,11 @@ import { NavLink } from "react-router";
 
 export default function Navbar({ edit }) {
   return (
-    <nav className="w-full h-13 bg-[#fffeff] fixed bottom-0 flex md:sticky md:top-0 md:bg-[#a49ce7] md:px-10">
-      <div className="hidden md:w-[30%] md:h-[100%] md:block md:flex md:items-center md:p-3">
+    <nav className="w-full h-13 bg-[#fffeff] fixed bottom-0 flex md:sticky md:top-0 md:bg-[#a49ce7] md:px-3">
+      <div className="hidden md:w-[70%] md:h-[100%] md:block md:flex md:items-center md:p-3">
         <font className="font-bold text-xl">Expense Tracker</font>
       </div>
-      <div className="w-full md:w-[70%] h-[100%] p-2 flex items-center justify-between md:text-white md:justify-end md:gap-6">
+      <div className="w-full md:w-[30%] h-[100%] p-2 flex items-center justify-between md:text-white md:justify-end md:gap-0 md:p-0">
         {/* Home  */}
         <NavLink
           to="/"
@@ -18,8 +18,8 @@ export default function Navbar({ edit }) {
           }
         >
           <div className="w-20 h-10 flex items-center justify-center flex-col">
-            <FaHome className="text-3xl" />
-            <span className="text-[15px]">Home</span>
+            <FaHome className="text-3xl md:text-sm" />
+            <span className="text-[15px] md:text-sm">Home</span>
           </div>
         </NavLink>
 
@@ -36,8 +36,9 @@ export default function Navbar({ edit }) {
                 <IoIosAdd className="text-5xl font-bold" />
               </div>
             </div>
-            <span className="text-[15px] text-center leading-tight md:flex md:flex-col md:justify-center md:items-center">
-              <IoIosAdd className="hidden md:block text-xl" /> Add Expenses
+            <span className="text-[15px] text-center leading-tight md:flex md:flex-col md:justify-center md:items-center md:text-sm">
+              <IoIosAdd className="hidden md:block text-xl md:text-sm" /> Add
+              Expenses
             </span>
           </NavLink>
         </div>
@@ -50,8 +51,8 @@ export default function Navbar({ edit }) {
           }
         >
           <div className="w-20 h-10 flex flex-col justify-center items-center">
-            <GiReceiveMoney className="text-3xl" />
-            <span className="text-[15px]">Expenses</span>
+            <GiReceiveMoney className="text-3xl md:text-sm" />
+            <span className="text-[15px] md:text-sm">Expenses</span>
           </div>
         </NavLink>
       </div>

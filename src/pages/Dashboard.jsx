@@ -46,7 +46,7 @@ export default function Dashboard({ expenses, edit }) {
           {/* Total Expenses  */}
           <div className="w-1/2 h-[100%] bg-[#b9e8da] rounded-lg p-2">
             <div className="w-full h-10 font-bold flex items-center pl-2">
-              Total Expenses
+              <span className="text-[16px]">Total Expenses</span>
             </div>
             <div className="w-full h-10 font-bold flex justify-end items-center pr-8">
               <span className="text-4xl">
@@ -54,7 +54,9 @@ export default function Dashboard({ expenses, edit }) {
               </span>
             </div>
             <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
-              <font className="text-2xl font-bold">{expenses.length}</font>
+              <font className="text-lg md:text-2xl font-bold">
+                {expenses.length}
+              </font>
               <font className="text-[12px] md:text-sm ">
                 {formatDate(new Date(), true)}
               </font>
@@ -63,16 +65,16 @@ export default function Dashboard({ expenses, edit }) {
           {/* Highest Expense  */}
           <div className="w-1/2 h-[100%] bg-[#4f8edb] rounded-lg p-2">
             <div className="w-full h-10 font-bold flex items-center pl-2">
-              Highest Expense
+              <span className="text-[17px]">Highest Expense</span>
             </div>
             <div className="w-full h-10 font-bold flex justify-end items-center pr-8">
-              <span className="text-4xl">
+              <span className="text-2xl md:text-4xl">
                 <FaArrowUp />
               </span>
             </div>
             <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
-              <font className="text-[19px] font-bold">
-                ₦{highestExpense ? highestExpense.amount : "0"}
+              <font className="text-[16px] font-bold">
+                ₦{highestExpense ? highestExpense.amount.toLocaleString() : "0"}
               </font>
               <font className="text-[12px] md:text-sm leading-[15px]">
                 {highestExpense ? (
@@ -90,16 +92,16 @@ export default function Dashboard({ expenses, edit }) {
           {/* Lowest Expense  */}
           <div className="w-1/2 h-[100%] bg-[#f77348] rounded-lg p-2">
             <div className="w-full h-10 font-bold flex items-center pl-2">
-              Lowest Expense
+              <span className="text-[16px]">Lowest Expense</span>
             </div>
             <div className="w-full h-10 font-bold flex justify-end items-center pr-8">
-              <span className="text-4xl">
+              <span className="text-2xl md:text-4xl">
                 <FaArrowDown />
               </span>
             </div>
             <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
-              <font className="text-[19px] font-bold">
-                ₦{lowestExpense ? lowestExpense.amount : "0"}
+              <font className="text-[16px] font-bold">
+                ₦{lowestExpense ? lowestExpense.amount.toLocaleString() : "0"}
               </font>
               <font className="text-[12px] md:text-sm leading-[15px]">
                 {lowestExpense ? (
@@ -113,15 +115,17 @@ export default function Dashboard({ expenses, edit }) {
           {/* Total Amount  */}
           <div className="w-1/2 h-[100%] bg-[#ddcaf6] rounded-lg p-2">
             <div className="w-full h-10 font-bold flex items-center pl-2">
-              Total Amount
+              <span className="text-[16px]">Total Amount</span>
             </div>
             <div className="w-full h-10 font-bold flex justify-end items-center pr-8">
-              <span className="text-4xl">
+              <span className="text-2xl md:text-4xl">
                 <GiWallet />
               </span>
             </div>
             <div className="w-full h-8 md:h-5 flex justify-center flex-col pl-2">
-              <font className="text-[19px] font-bold">₦{totalExpense}</font>
+              <font className="text-[16px] font-bold">
+                ₦{totalExpense.toLocaleString()}
+              </font>
               <font className="text-[12px] md:text-sm leading-[15px]">
                 {expenses.length === 0 ? (
                   <span className="text-sm">No expenses yet</span>
@@ -134,7 +138,7 @@ export default function Dashboard({ expenses, edit }) {
         </div>
       </div>
 
-      <RecentTransactions />
+      <RecentTransactions expenses={expenses} />
     </section>
   );
 }

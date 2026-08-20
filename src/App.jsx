@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import AddExpenses from "./pages/AddExpenses";
 import Expenses from "./pages/Expenses";
 import { RiNumbersFill } from "react-icons/ri";
+import Reports from "./pages/Reports";
 
 function App() {
   //States
@@ -85,6 +86,7 @@ function App() {
             />
           }
         />
+        <Route path="/reports" element={<Reports expenses={expenses} />} />
       </Routes>
     </main>
   );

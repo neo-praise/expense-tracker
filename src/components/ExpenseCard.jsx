@@ -155,9 +155,9 @@ export default function ExpenseCard({
                 {/* Amount */}
                 <div className="w-[20%] h-full flex flex-col justify-center items-end">
                   <span className="font-bold text-[15px]">
-                    ₦{expense.amount}
+                    ₦{expense.amount.toLocaleString()}
                   </span>
-                  <span className="text-[13px] text-gray-500">
+                  <span className="text-[12px] text-gray-500 md:text-[14px] text-center">
                     {formatDate(expense.date)}
                   </span>
                 </div>
