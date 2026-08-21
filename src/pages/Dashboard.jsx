@@ -65,7 +65,7 @@ export default function Dashboard({ expenses, edit }) {
           {/* Highest Expense  */}
           <div className="w-1/2 h-[100%] bg-[#4f8edb] rounded-lg p-2">
             <div className="w-full h-10 font-bold flex items-center pl-2">
-              <span className="text-[17px]">Highest Expense</span>
+              <span className="text-[16px]">Highest Expense</span>
             </div>
             <div className="w-full h-10 font-bold flex justify-end items-center pr-8">
               <span className="text-2xl md:text-4xl">

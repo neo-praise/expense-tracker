@@ -9,7 +9,7 @@ export default function Header() {
         <div className="w-[50%] h-[85%] flex items-center">
           <input
             type="text"
-            placeholder="Built by codeKraft"
+            placeholder="Built by Praise💖"
             className="w-[80%] h-full bg-white rounded-l-2xl p-2 outline-none text-[12px] md:text-lg text-gray-600"
             disabled
           />
